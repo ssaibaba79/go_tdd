@@ -1,3 +1,3 @@
-module example.com/hello
+module example.com/go_tdd
 
 go 1.25.6
