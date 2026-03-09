@@ -24,6 +24,12 @@ func TestAggregator(t *testing.T) {
 		assertResult(t, got, want)
 	})
 
+	  t.Run("Test default", func(t *testing.T) {
+		want := 0
+		got := Aggregator("",data)
+		assertResult(t, got, want)
+	})
+
 }
 
 func assertResult(t testing.TB, got, want int) {
