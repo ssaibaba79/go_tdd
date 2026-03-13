@@ -2,6 +2,11 @@ package composites
 
 import "math"
 
+type Shape interface {
+	Area() float64
+	Perimeter() float64
+}
+
 type Rectangle struct {
 	length float64
 	width float64

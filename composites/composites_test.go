@@ -2,37 +2,42 @@ package composites
 
 import "testing"
 
+type Test struct{
+		name string
+		shape Shape
+		want float64
+	}
+
 func TestArea(t *testing.T) {
-  want := 50.0
-	got := Rectangle{length:10.0, width:5.0}.Area()
-  assertResult(t, got, want)
-	
+
+	areaTests := []Test {
+		{	"Rectangle",Rectangle{length:10.0, width:5.0}, 50.0},
+		{	"Circle",Circle{radius:10}, 314.00},
+	}
+
+	for _, tt := range areaTests {
+			t.Run(tt.name, func(t *testing.T){
+				got := tt.shape.Area()
+				if got != tt.want {
+					t.Errorf("%#v got=%g want=%g", tt.shape, got, tt.want)
+				}
+			});
+	}
 }
 
 func TestPerimeter(t *testing.T) {
-	want := 30.0
-	got := Rectangle{length:10.0, width:5.0}.Perimeter()
-  assertResult(t, got, want)
-	
-}
 
-func TestAreaCircle(t *testing.T) {
-  want := 314.00
-	got := Circle{radius:10}.Area()
-  assertResult(t, got, want)
-	
-}
-
-func TestPerimeterCircle(t *testing.T) {
-	want := 62.00
-	got := Circle{radius:10}.Perimeter()
-  assertResult(t, got, want)
-	
-}
-
-func assertResult(t testing.TB, got, want float64) {
-	t.Helper()
-	if got != want {
-		t.Errorf("got \"%.2f\" != want \"%.2f\"", got, want)
+	perimeterTests := []Test{
+		{	"Rectangle", Rectangle{length:10.0, width:5.0}, 30.0},
+		{	"Circle", Circle{radius:10}, 62.00},
 	}
+
+	for _, tt := range perimeterTests {
+			t.Run(tt.name, func(t *testing.T){
+					got := tt.shape.Perimeter()
+					if got != tt.want {
+						t.Errorf("%#v got=%g want=%g", tt.shape, got, tt.want)
+					}
+				});
+ }
 }
