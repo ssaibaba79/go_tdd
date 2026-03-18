@@ -18,7 +18,7 @@ func TestCheckWebSites(t *testing.T) {
 	want := map[string]bool{
 		"http://google.com":          true,
 		"http://blog.gypsydave5.com": true,
-		"http://bad.site.x":    false,
+		"http://bad.site.x":          false,
 	}
 
 	mockChecker := func(url string) bool {
@@ -32,7 +32,6 @@ func TestCheckWebSites(t *testing.T) {
 	}
 }
 
-
 func BenchmarkNonBlockingCheckWebSites(b *testing.B) {
 	urls := make([]string, 50)
 	mockWebsiteChecker := func(url string) bool {
@@ -40,7 +39,7 @@ func BenchmarkNonBlockingCheckWebSites(b *testing.B) {
 		return true
 	}
 	for i := range urls {
-			urls[i] = fmt.Sprintf("http://test%dsite.com", i)
+		urls[i] = fmt.Sprintf("http://test%dsite.com", i)
 	}
 
 	for b.Loop() {

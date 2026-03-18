@@ -9,11 +9,11 @@ import (
 func TestCountDown(t *testing.T) {
 
 	buff := &bytes.Buffer{}
-	want := fmt.Sprintf("%s\n%s\n%s\n%s", "3","2","1","Go!")
+	want := fmt.Sprintf("%s\n%s\n%s\n%s", "3", "2", "1", "Go!")
 	sleeper := MockingSleeper{}
 	CountDown(buff, sleeper)
 	got := buff.String()
-  assertString(t, got, want)
+	assertString(t, got, want)
 }
 
 func assertString(t testing.TB, got, want string) {
@@ -23,8 +23,6 @@ func assertString(t testing.TB, got, want string) {
 	}
 }
 
-type MockingSleeper struct {}
+type MockingSleeper struct{}
 
-func (d MockingSleeper ) Sleep(){}
-
-
+func (d MockingSleeper) Sleep() {}

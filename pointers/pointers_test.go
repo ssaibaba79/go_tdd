@@ -28,7 +28,7 @@ func TestWallet(t *testing.T) {
 		err := wallet.Withdraw(Bitcoin(withdraw))
 		if err != nil {
 			t.Errorf("withdraw failed with error, %v", err)
-			return 
+			return
 		}
 		balance := wallet.Balance()
 
@@ -36,7 +36,6 @@ func TestWallet(t *testing.T) {
 			t.Errorf("%#v withdrawn :%v, balance:%v", wallet, withdraw, balance)
 		}
 	})
-
 
 	t.Run("Withdraw With Insufficient funds", func(t *testing.T) {
 		startingBalance := Bitcoin(10.0)
@@ -53,5 +52,5 @@ func TestWallet(t *testing.T) {
 			t.Errorf("%#v withdraw > balance was allowed :%v, balance:%v", wallet, startingBalance, balance)
 		}
 	})
- 
+
 }

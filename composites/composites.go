@@ -9,19 +9,19 @@ type Shape interface {
 
 type Rectangle struct {
 	length float64
-	width float64
+	width  float64
 }
 
-type Circle struct{
+type Circle struct {
 	radius float64
 }
 
-func (r Rectangle) Area() float64{
+func (r Rectangle) Area() float64 {
 	return math.Floor(r.length * r.width)
 }
 
 func (r Rectangle) Perimeter() float64 {
-	return math.Floor(2 *(r.length + r.width))
+	return math.Floor(2 * (r.length + r.width))
 }
 
 func (c Circle) Area() float64 {

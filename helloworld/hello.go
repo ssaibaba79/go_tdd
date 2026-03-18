@@ -23,7 +23,7 @@ func greetingPrefix(language string) (prefix string) {
 	case french:
 		prefix = frenchGreetPrefix
 	default:
-			prefix = englishGreetPrefix
+		prefix = englishGreetPrefix
 	}
 	return
 }

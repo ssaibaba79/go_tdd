@@ -2,7 +2,6 @@ package maps
 
 import "errors"
 
-
 type Dictionary map[string]string
 
 var ErrWordNotFound = errors.New("word not found")
@@ -15,7 +14,7 @@ func (d Dictionary) Lookup(word string) (string, error) {
 		return "", ErrWordNotFound
 	}
 	return meaning, nil
-	
+
 }
 
 func (d Dictionary) Add(word, meaning string) error {
@@ -27,7 +26,6 @@ func (d Dictionary) Add(word, meaning string) error {
 	d[word] = meaning
 	return nil
 }
-
 
 func (d Dictionary) Update(word, meaning string) error {
 

@@ -9,23 +9,19 @@ import (
 type chanInt chan int
 
 func (ch chanInt) handle(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w,"next :%d", <-ch)
+	fmt.Fprintf(w, "next :%d", <-ch)
 }
 
-
-func counter (ch chan<-int) {
-  for i:=0;;i++{
+func counter(ch chan<- int) {
+	for i := 0; ; i++ {
 		ch <- i
 	}
 }
 
-
-
-func main(){
-  var nextId chanInt = make(chan int)
+func main() {
+	var nextId chanInt = make(chan int)
 	go counter(nextId)
-	
+
 	http.HandleFunc("/", nextId.handle)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
-

@@ -21,7 +21,7 @@ func (w *Wallet) Deposit(deposit Bitcoin) (err error) {
 	return
 }
 
-func(w *Wallet) Withdraw(withdraw Bitcoin) (err error) {
+func (w *Wallet) Withdraw(withdraw Bitcoin) (err error) {
 	if withdraw <= 0 {
 		err = fmt.Errorf("invalid withdraw : withdraw value %g cannot be less than 0.", withdraw)
 		return

@@ -23,16 +23,14 @@ func TestLookup(t *testing.T) {
 		err := dict.Add("Book", "An instrument for documenting information")
 		assertError(t, dict, err, nil)
 		got, _ := dict.Lookup("Book")
-		assertString(t, dict,  got, want)
+		assertString(t, dict, got, want)
 	})
-
 
 	t.Run("Add existing word", func(t *testing.T) {
 		dict := Dictionary{"archer": "A person who can use a bow and arrow proficiently"}
 		err := dict.Add("archer", "A warrior who uses a bow and arrow in a war")
 		assertError(t, dict, err, ErrWordExists)
 	})
-
 
 	t.Run("Update definition", func(t *testing.T) {
 		dict := Dictionary{"archer": "A person who can use a bow and arrow proficiently"}
@@ -43,12 +41,11 @@ func TestLookup(t *testing.T) {
 		assertString(t, dict, got, want)
 	})
 
-		t.Run("Update definition for unknown word", func(t *testing.T) {
+	t.Run("Update definition for unknown word", func(t *testing.T) {
 		dict := Dictionary{"archer": "A person who can use a bow and arrow proficiently"}
 		err := dict.Update("Book", "An instrument for documenting information")
 		assertError(t, dict, err, ErrWordNotFound)
 	})
-
 
 	t.Run("Delete word", func(t *testing.T) {
 		dict := Dictionary{"archer": "A person who can use a bow and arrow proficiently"}
@@ -58,24 +55,24 @@ func TestLookup(t *testing.T) {
 		assertError(t, dict, err, ErrWordNotFound)
 	})
 
-		t.Run("Delete unknown word", func(t *testing.T) {
+	t.Run("Delete unknown word", func(t *testing.T) {
 		dict := Dictionary{"archer": "A person who can use a bow and arrow proficiently"}
 		err := dict.Delete("Book")
-		assertError(t, dict,  err, ErrWordNotFound)
+		assertError(t, dict, err, ErrWordNotFound)
 	})
 
 }
 
-func assertString(t testing.TB, dict Dictionary,  got, want string) {
+func assertString(t testing.TB, dict Dictionary, got, want string) {
 	t.Helper()
 	if got != want {
-		t.Errorf("%#v want:%s, got:%s",dict,  want, got)
+		t.Errorf("%#v want:%s, got:%s", dict, want, got)
 	}
 }
 
 func assertError(t testing.TB, dict Dictionary, got, want error) {
 	t.Helper()
 	if got != want {
-		t.Errorf("%#v got error :%q, want:%q",dict,  want, got)
+		t.Errorf("%#v got error :%q, want:%q", dict, want, got)
 	}
 }
